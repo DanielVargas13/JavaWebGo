@@ -1,5 +1,4 @@
-
-package browser;
+package io.github.tpms_coding_buddies.browser;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -10,7 +9,7 @@ import javax.swing.event.HyperlinkListener;
 import java.net.*;
 import java.io.*;
 
-public class browser {
+public class Browser {
     private JFrame frame;
     private JPanel panelTop;
     private JEditorPane editor;

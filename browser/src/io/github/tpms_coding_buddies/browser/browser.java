@@ -18,48 +18,29 @@ public class Browser {
     private JButton button;
     private URL url;
 
-    public browser(String title) {
+    public Browser(String title) {
         initComponents();
-
-        //set the title of the frame
+        
         frame.setTitle(title);
-
-        //set the default cloe op of the jframe
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //set size of frame
         frame.setSize(800,600);
-
-        //add jpanel to north of jframe
+        
         frame.add(BorderLayout.NORTH, panelTop);
-
-        //add textfield and navigation button to jpanel.
         panelTop.add(field);
         panelTop.add(button);
-
-        //add scroll pane to jframe center
         frame.add(BorderLayout.CENTER, scroll);
-
         
-        //set the frame visible
         frame.setVisible(true);
     }//end Browser() constructor
 
     private void initComponents() {
-    	
-    	
-        //create the JFrame
         frame = new JFrame();
-
-        //create the JPanel used to hold the text field and button.
         panelTop = new JPanel();
         
-        //set the url
         try {
             url = new URL("http://tinyurl.com/tpmschat");
-        }
-        catch(MalformedURLException mue) {
-            JOptionPane.showMessageDialog(null,mue);
+        } catch(MalformedURLException mue) {
+            JOptionPane.showMessageDialog(null, mue);
         }
         
         //create the JEditorPane
@@ -69,13 +50,12 @@ public class Browser {
             //set the editor pane to false.
             editor.setEditable(false);
         }
-        catch(IOException ioe) {
-            JOptionPane.showMessageDialog(null,ioe);
+        catch(IOException e) {
+            JOptionPane.showMessageDialog(frame, e);
         }
         
         //create the scroll pane and add the JEditorPane to it.
-        scroll = new JScrollPane(editor, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scroll = new JScrollPane(editor, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         //create the JTextField
         field = new JTextField();
@@ -87,7 +67,6 @@ public class Browser {
            public void run() {
                field.setText(url.toString());
            }
-          
         });
         editor.addHyperlinkListener(new HyperlinkListener() {
             public void hyperlinkUpdate(HyperlinkEvent e) {

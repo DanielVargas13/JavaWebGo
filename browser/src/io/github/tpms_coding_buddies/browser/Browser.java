@@ -16,12 +16,12 @@ public class Browser {
 	private JButton button;
 	private URL url;
 
-	public Browser(String title) {
+	public Browser(String title, String url_string) {
 		frame = new JFrame();
 		panelTop = new JPanel();
 
 		try {
-			url = new URL("http://tinyurl.com/tpmschat");
+			url = new URL(url_string);
 		} catch (MalformedURLException ex) {
 			JOptionPane.showMessageDialog(null, ex);
 		}
@@ -50,8 +50,12 @@ public class Browser {
 				try {
 					editor.setPage(e.getURL());
 					field.setText(e.getURL().toString());
-				} catch (IOException ioe) {
-					JOptionPane.showMessageDialog(null, ioe);
+					System.out.println("Link");
+					System.out.println(e.getURL());
+					System.out.println(editor.getPage());
+					System.out.println();
+				} catch (IOException ex) {
+					JOptionPane.showMessageDialog(null, ex);
 				}
 		});//end HyperlinkListener
 		//create the button for changing pages.
@@ -61,6 +65,10 @@ public class Browser {
 		button.addActionListener(e -> {
 			try {
 				editor.setPage(field.getText());
+				System.out.println("URL bar");
+				System.out.println(field.getText());
+				System.out.println(editor.getPage());
+				System.out.println();
 			} catch (IOException ex) {
 				JOptionPane.showMessageDialog(null, ex);
 			}
@@ -85,6 +93,6 @@ public class Browser {
 	}//end Browser() constructor
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> new Browser("Simple web browser"));
+		SwingUtilities.invokeLater(() -> new Browser("Simple web browser", "http://tpmschat.pythonanywhere.com"));
 	}//end main method.
 }//end Browser class

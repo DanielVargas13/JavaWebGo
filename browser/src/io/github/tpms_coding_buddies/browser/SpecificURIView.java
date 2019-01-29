@@ -1,7 +1,5 @@
 package io.github.tpms_coding_buddies.browser;
 
-import io.github.tpms_coding_buddies.browser.protocols.InvalidProtocolURIView;
-
 import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
